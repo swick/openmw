@@ -95,7 +95,7 @@ namespace OgreInit
     Ogre::Root* OgreInit::init(const std::string &logPath)
     {
 
-        #ifndef ANDROID
+        #ifndef __ANDROID__
         // Set up logging first
         new Ogre::LogManager;
         Ogre::Log *log = Ogre::LogManager::getSingleton().createLog(logPath);

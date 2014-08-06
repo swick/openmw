@@ -42,13 +42,13 @@ SDLWindowHelper::SDLWindowHelper (SDL_Window* window, int w, int h,
 		params.insert(std::make_pair("macAPICocoaUseNSView", "true"));
 		winHandle  = Ogre::StringConverter::toString(WindowContentViewHandle(wmInfo));
 		break;
-#elif ANDROID           
+#elif __ANDROID__
         case SDL_SYSWM_ANDROID:
 		winHandle = Ogre::StringConverter::toString((unsigned long)wmInfo.info.android.window);
 		winHandleSurface = Ogre::StringConverter::toString((unsigned long)wmInfo.info.android.surface);
          
 		break;
- #else
+#else
 	case SDL_SYSWM_X11:
 		winHandle = Ogre::StringConverter::toString((unsigned long)wmInfo.info.x11.window);
 		break;
@@ -61,7 +61,7 @@ SDLWindowHelper::SDLWindowHelper (SDL_Window* window, int w, int h,
 	/// \todo externalWindowHandle is deprecated according to the source code. Figure out a way to get parentWindowHandle
 	/// to work properly. On Linux/X11 it causes an occasional GLXBadDrawable error.
 
-#ifdef ANDROID	
+#ifdef __ANDROID__
         params.insert(std::make_pair("externalSurface",  winHandleSurface));
 #endif
         params.insert(std::make_pair("externalWindowHandle",  winHandle));

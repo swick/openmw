@@ -5,7 +5,7 @@
 #include <boost/filesystem.hpp>
 
 #if defined(__linux__) || defined(__FreeBSD__) 
-#ifndef ANDROID
+#ifndef __ANDROID__
     #include <components/files/linuxpath.hpp>
     namespace Files { typedef LinuxPath TargetPathType; }
 #else
